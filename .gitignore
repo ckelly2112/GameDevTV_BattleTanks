@@ -88,4 +88,5 @@ Build/Android/res/*
 Build/Android/res/*/*
 !Build/Android/res/*/*.png
 
-
+### Ignore Starter Content
+StarterContent/*
