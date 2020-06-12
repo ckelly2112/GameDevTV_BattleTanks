@@ -75,6 +75,9 @@ Plugins/*/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
+# Ignore Starter Content
+Content/StarterContent/*
+
 ### UnrealEngine Patch ###
 # Don't ignore icon and splash images for mobile app
 !Build/IOS/Resources/
@@ -88,5 +91,4 @@ Build/Android/res/*
 Build/Android/res/*/*
 !Build/Android/res/*/*.png
 
-### Ignore Starter Content
-StarterContent/
+
