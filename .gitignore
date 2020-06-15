@@ -91,4 +91,5 @@ Build/Android/res/*
 Build/Android/res/*/*
 !Build/Android/res/*/*.png
 
-
+# Ignore Test Packages
+Package/*
