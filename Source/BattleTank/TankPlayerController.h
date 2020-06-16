@@ -23,4 +23,6 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 		ATank* GetControlledTank() const;
 		//Start tank moving turret towards the crosshair
 		void AimTowardsCrosshair();
+
+		bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 };
