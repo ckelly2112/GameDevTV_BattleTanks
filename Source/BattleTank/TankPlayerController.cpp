@@ -6,7 +6,6 @@
 void ATankPlayerController::BeginPlay()
 {
     Super::BeginPlay();
-    UE_LOG(LogTemp, Warning, TEXT("PlayerController Begin Play"));
     if (!GetControlledTank())
     {
         UE_LOG(LogTemp, Error, TEXT("Pawn not possessed"));
@@ -19,6 +18,24 @@ void ATankPlayerController::BeginPlay()
 
 }
 
-ATank* ATankPlayerController::GetControlledTank() const{
+void ATankPlayerController::Tick(float DeltaTime)
+{
+    Super::Tick( DeltaTime );
+    AimTowardsCrosshair();
+
+
+    //Aim Toward Crosshair
+}
+
+ATank* ATankPlayerController::GetControlledTank() const
+{
     return Cast<ATank>(GetPawn());
+}
+
+void ATankPlayerController::AimTowardsCrosshair()
+{
+    if(!GetControlledTank()) return;
+
+    //Get world location in linetrace through crosshair
+   
 }

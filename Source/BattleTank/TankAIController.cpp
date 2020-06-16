@@ -8,7 +8,7 @@
 void ATankAIController::BeginPlay()
 {
     Super::BeginPlay();
-    UE_LOG(LogTemp, Warning, TEXT("AI Controller Begin Play"));
+  
     if (!GetControlledTank())
     {
         UE_LOG(LogTemp, Error, TEXT("Pawn not possessed"));
@@ -27,6 +27,11 @@ void ATankAIController::BeginPlay()
         UE_LOG(LogTemp, Warning, TEXT("AI Gets Player Controller: %s"), *GetPlayerTank()->GetName());
     }
 
+}
+
+void ATankAIController::Tick(float DeltaTime)
+{
+    Super::Tick( DeltaTime );
 }
 
 ATank* ATankAIController::GetControlledTank() const{
