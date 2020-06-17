@@ -38,9 +38,10 @@ void ATankPlayerController::AimTowardsCrosshair()
 {
     if(!GetControlledTank()) {return;}
 
-    FVector HitLocation;
-    if(GetSightRayHitLocation(HitLocation)) // Has "Side-effect" that it is going to line trace
+    FVector HitLocation(0);
+    if(GetSightRayHitLocation(HitLocation)) // This Gets the target location through a series of calculations
     {
+        UE_LOG(LogTemp, Warning, TEXT("Hit Location: %s"), *HitLocation.ToString());
         // TODO Tell controlled tank to aim at this point
     }
 
@@ -61,10 +62,13 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector& OutHitLocation) cons
     if(GetLookDirection(ScreenLocation, LookDirection))
     {
         //Line-Trace along that look direction and see what we hit
-        // GetVectorHitLocation(LookDirection);
+        GetLookVectorHitLocation(LookDirection, OutHitLocation);
+        return true;
     }
 
-    return true;
+    //If Not
+    return false;
+
 }
 
 bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& out_LookDirection) const
@@ -81,18 +85,23 @@ bool ATankPlayerController::GetLookDirection(FVector2D ScreenLocation, FVector& 
 
 }
 
-bool ATankPlayerController::GetLookVectorHitLocation()
+bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const
 {
 
     //TODO Actually make this do something
-    FVector Start, End;
-    FHitResult Hit;
-    GetWorld()->LineTraceSingleByChannel
-    (
-        Hit,
-        Start,
-        End,
-        ECollisionChannel::ECC_Visibility
-    );
+    FHitResult HitResult;
+    FVector StartLocation = PlayerCameraManager->GetCameraLocation();
+    FVector EndLocation = StartLocation + (LookDirection * LineTraceRange);
+    if (GetWorld()->LineTraceSingleByChannel
+        (
+            HitResult,
+            StartLocation,
+            EndLocation,
+            ECollisionChannel::ECC_Visibility
+        ))
+    {
+        HitLocation = HitResult.Location;
+        return true;
+    }
     return false;
 }
