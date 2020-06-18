@@ -19,31 +19,13 @@ void UTankAimingComponent::SetBarrelReference(UStaticMeshComponent* BarrelToSet)
 }
 
 
-// Called when the game starts
-void UTankAimingComponent::BeginPlay()
-{
-	Super::BeginPlay();
-
-	// ...
-	
-}
-
-
-// Called every frame
-void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
-}
-
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
 	if (!Barrel) {return;}
 	FVector out_LaunchVelocity(0);
 	FVector StartLocation = Barrel->GetSocketLocation(FName("Projectile"));
 
-	//Calculate out velocity
+	//Calculate out velocity (Also this syntax looks better to me than making a seperate bool)
 	if(UGameplayStatics::SuggestProjectileVelocity
 		(
 			this,
@@ -59,8 +41,20 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 	)
 	{
 		auto AimDirection = out_LaunchVelocity.GetSafeNormal();
-		UE_LOG(LogTemp, Warning, TEXT("%s Firing at: %s"), *GetOwner()->GetName(), *AimDirection.ToString());
+		// UE_LOG(LogTemp, Warning, TEXT("%s Firing at: %s"), *GetOwner()->GetName(), *AimDirection.ToString());
+		MoveBarrelTowards(AimDirection);
 	}
 
+}
+
+void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
+{
+	//Get difference between current rotation and AimDirection
+	auto BarrelRotator = Barrel->GetForwardVector().Rotation();
+	auto AimAsRotator = AimDirection.Rotation();
+	auto DeltaRotator = AimAsRotator - BarrelRotator;
+	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *AimAsRotator.ToString());
+	//Move the barrel the right amount this frame
+	//Given a max elevation speed
 }
 
