@@ -1,7 +1,10 @@
 {
 	"files.exclude": {
-		"C:/Users/ckell/source/repos/udemy_game_dev/BattleTank/BattleTank/.vscode": true,
-		"C:/Users/ckell/source/repos/udemy_game_dev/BattleTank/BattleTank/Content": true,
-		"C:/Users/ckell/source/repos/udemy_game_dev/BattleTank/BattleTank/Intermediate": true
+		"E:/Unreal_Games/BattleTank/.git": true,
+		"E:/Unreal_Games/BattleTank/.vscode": true,
+		"E:/Unreal_Games/BattleTank/Content": true,
+		"E:/Unreal_Games/BattleTank/Intermediate": true,
+		"E:/Unreal_Games/BattleTank/Package": true,
+		"E:/Unreal_Games/BattleTank/Saved": true
 	}
 }

@@ -42,8 +42,8 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 	)
 	{
 		auto AimDirection = out_LaunchVelocity.GetSafeNormal();
-		// UE_LOG(LogTemp, Warning, TEXT("%s Firing at: %s"), *GetOwner()->GetName(), *AimDirection.ToString());
 		MoveBarrelTowards(AimDirection);
+
 	}
 
 }
@@ -55,8 +55,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	//Move the barrel the right amount this frame
-	UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *AimAsRotator.ToString());
-
 	Barrel->Elevate(5);
 	//Given a max elevation speed
 }
