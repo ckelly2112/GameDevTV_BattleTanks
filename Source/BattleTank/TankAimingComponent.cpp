@@ -37,14 +37,17 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 			false,
 			0,
 			0,
-			ESuggestProjVelocityTraceOption::DoNotTrace
+			ESuggestProjVelocityTraceOption::DoNotTrace,
+			FCollisionResponseParams::DefaultResponseParam,
+			TArray<AActor *>(),
+			false
 		)
 	)
 	{
 		auto AimDirection = out_LaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
-
 	}
+
 
 }
 
@@ -55,7 +58,7 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	//Move the barrel the right amount this frame
-	Barrel->Elevate(5);
+	Barrel->Elevate(DeltaRotator.Pitch);
 	//Given a max elevation speed
 }
 
