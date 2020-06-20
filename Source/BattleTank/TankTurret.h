@@ -20,12 +20,6 @@ void Azimuth(float RelativeSpeed);
 private:
 
 	UPROPERTY(EditAnywhere)
-	float MaxDegreesPerSecond = 15.f; 
+	float MaxDegreesPerSecond = 30.f; 
 
-	UPROPERTY(EditAnywhere)
-	float MaxRotateInDegrees = 360.f;
-
-	UPROPERTY(EditAnywhere)
-	float MinRotateInDegrees = -360.f;
-	
 };
