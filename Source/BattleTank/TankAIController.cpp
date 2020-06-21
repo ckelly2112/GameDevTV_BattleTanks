@@ -14,20 +14,10 @@ void ATankAIController::BeginPlay()
     {
         UE_LOG(LogTemp, Error, TEXT("Pawn not possessed"));
     }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("%s Posessed by AI"), *GetControlledTank()->GetName());
-    }
-
     if (!GetPlayerTank())
     {
         UE_LOG(LogTemp, Error, TEXT("AI Can't get player controller"));
     }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("AI Gets Player Controller: %s"), *GetPlayerTank()->GetName());
-    }
-
 }
 
 void ATankAIController::Tick(float DeltaTime)

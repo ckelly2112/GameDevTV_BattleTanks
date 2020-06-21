@@ -23,6 +23,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetComponentReference(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
+	UFUNCTION(BlueprintCallable, Category = Controls)
+	void Fire();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
