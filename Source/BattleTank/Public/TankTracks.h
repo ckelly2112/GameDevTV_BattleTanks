@@ -7,7 +7,7 @@
 #include "TankTracks.generated.h"
 
 /**
- * 
+ * Tank Tracks test
  */
 UCLASS(meta = (BlueprintSpawnableComponent))
 class BATTLETANK_API UTankTracks : public UStaticMeshComponent
