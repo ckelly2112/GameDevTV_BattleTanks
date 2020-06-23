@@ -25,6 +25,7 @@ void ATankAIController::Tick(float DeltaTime)
 
         ControlledTank->AimAt(PlayerTank->GetActorLocation());
 
-		ControlledTank->Fire();
+		// TODO Turn this on when bullets are less annoying
+		//ControlledTank->Fire();
     }
 }
