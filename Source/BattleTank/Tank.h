@@ -22,9 +22,6 @@ public:
 
 	void AimAt(FVector HitLocation);
 
-	UFUNCTION(BlueprintCallable, Category = Setup)
-	void SetComponentReference(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
-
 	UFUNCTION(BlueprintCallable, Category = Controls)
 	void Fire();
 
@@ -37,10 +34,6 @@ protected:
 	UPROPERTY(BlueprintReadOnly)
 	UTankMovementComponent* TankMovementComponent = nullptr;
 
-public:	
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
 
