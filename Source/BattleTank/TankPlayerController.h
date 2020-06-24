@@ -14,7 +14,7 @@ UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-	private:
+private:
 
 	UPROPERTY(EditDefaultsOnly)
 	float CrosshairXLocation = 0.5f;
@@ -27,8 +27,11 @@ class BATTLETANK_API ATankPlayerController : public APlayerController
 		void BeginPlay() override;
 		void Tick(float DeltaTime) override;
 
-	private:
+protected:
+		UFUNCTION(BlueprintCallable, Category = "Setup")
 		ATank* GetControlledTank() const;
+
+public:
 		//Start tank moving turret towards the crosshair
 		void AimTowardsCrosshair();
 
