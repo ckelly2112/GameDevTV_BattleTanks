@@ -30,7 +30,6 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(Throw);
 
-	// TODO Prevent double controls to increase speed
 }
 
 void UTankMovementComponent::IntendTurnRight(float Throw)
@@ -39,5 +38,4 @@ void UTankMovementComponent::IntendTurnRight(float Throw)
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(-Throw);
 
-	// TODO Prevent double controls to increase speed
 }
