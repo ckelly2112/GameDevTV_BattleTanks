@@ -10,7 +10,7 @@
 void ATankPlayerController::BeginPlay()
 {
     Super::BeginPlay();
-    if (!GetControlledTank())
+    if (!ensure(GetControlledTank()))
     {
         UE_LOG(LogTemp, Error, TEXT("Pawn not possessed"));
     }
@@ -36,7 +36,7 @@ void ATankPlayerController::Tick(float DeltaTime)
 
 void ATankPlayerController::AimTowardsCrosshair()
 {
-    if(!GetControlledTank()) {return;}
+    if(!ensure(GetControlledTank())) {return;}
 
     FVector HitLocation(0);
     if(GetSightRayHitLocation(HitLocation)) // This Gets the target location through a series of calculations
