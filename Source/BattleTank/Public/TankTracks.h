@@ -18,10 +18,19 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Input)
 	void SetThrottle(float Throttle);
 
-private:
-
+	void DriveTracks();
 	// Max force per track, in Newtons
 	UPROPERTY(EditDefaultsOnly)
 	float TrackMaxDrivingForce = 400000.0f; // Assume 40 tonne tank with 1g acceleration
-	
+
+private:
+
+	UTankTracks();
+	void ApplySidewaysforce();
+	void BeginPlay() override;
+
+	UFUNCTION(BlueprintCallable, Category = HitEvents)
+	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+
+	float CurretThrottle = 0.f;
 };

@@ -28,6 +28,6 @@ void ATankAIController::Tick(float DeltaTime)
 
 		// TODO Turn this on when bullets are less annoying...
 
-		AimingComponent->Fire();
+		//AimingComponent->Fire();
     
 }
