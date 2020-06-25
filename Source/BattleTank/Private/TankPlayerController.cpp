@@ -31,11 +31,9 @@ void ATankPlayerController::AimTowardsCrosshair()
     FVector HitLocation(0);
     if(GetSightRayHitLocation(HitLocation)) // This Gets the target location through a series of calculations
     {
-        // TODO Tell controlled tank to aim at this point
         AimingComponent->AimAt(HitLocation);
     }
 
-    //Get world location of linetrace through crosshair
    
 }
 
