@@ -44,10 +44,13 @@ protected:
 	EFiringStatus FiringStatus = EFiringStatus::Aiming;
 
 private:
+	void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
+	
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
+	FVector AimDirection = FVector(0);
 
-	double LastFireTime = 0;
+	float LastFireTime = 0;
 
 
 	UPROPERTY(EditDefaultsOnly, Category = Firing)
@@ -60,6 +63,8 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	bool IsBarrelMoving();
 
 		
 };
