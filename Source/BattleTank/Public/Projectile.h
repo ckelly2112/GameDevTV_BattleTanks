@@ -1,5 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+// Christopher Kelly
+// Check out www.chriskelly48th.ca for contact info
 #pragma once
 
 #include "CoreMinimal.h"
@@ -28,7 +28,14 @@ protected:
 	UProjectileMovementComponent* ProjectileMovementComponent = nullptr;
 
 private:	
-	
+	void OnTimerExpire();
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float DestroyDelay = 10.f;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float ProjectileDamage = 10.f;
+
 	UPROPERTY(VisibleAnywhere, Category = Setup)
 	UStaticMeshComponent* CollisionMesh = nullptr;
 	UPROPERTY(VisibleAnywhere, Category = Setup)

@@ -1,5 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+// Christopher Kelly
+// Check out www.chriskelly48th.ca for contact info
 
 #include "TankPlayerController.h"
 #include "TankAimingComponent.h"
