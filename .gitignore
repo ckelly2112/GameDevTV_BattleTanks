@@ -76,8 +76,7 @@ Plugins/*/Intermediate/*
 DerivedDataCache/*
 
 # Ignore Starter Content
-Content/StarterContent/*
-Content/SpringLandscape/*
+
 ### UnrealEngine Patch ###
 # Don't ignore icon and splash images for mobile app
 !Build/IOS/Resources/
