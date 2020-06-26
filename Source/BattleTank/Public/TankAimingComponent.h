@@ -42,7 +42,7 @@ public:
 	EFiringStatus GetFiringStatus() const;
 
 	UFUNCTION(BlueprintCallable, Category = Controls)
-	int GetRoundsLeft() const;
+	int32 GetRoundsLeft() const;
 
 protected:
 
@@ -72,7 +72,7 @@ private:
 	bool IsBarrelMoving();
 
 	UPROPERTY(EditDefaultsOnly, Category = Ammo)
-	int RoundsLeft = 3;
+	int32 RoundsLeft = 3;
 
 		
 };
