@@ -23,6 +23,15 @@ float ATank::TakeDamage(float DamageAmount, struct FDamageEvent const & DamageEv
 {
 	
 	int32 DamageToApply = FMath::Clamp(FMath::RoundToInt(DamageAmount), 0, CurrentHealth);
-	UE_LOG(LogTemp, Warning, TEXT("Testing Taking Damage %f / %d"), DamageAmount, DamageToApply);
+	CurrentHealth -= DamageToApply;
+	if (CurrentHealth <= 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("He's dead Jim"));
+	}
 	return DamageToApply;
+}
+
+float ATank::GetHealthPercent() const
+{
+	return (float)CurrentHealth / (float)StartingHealth;
 }
