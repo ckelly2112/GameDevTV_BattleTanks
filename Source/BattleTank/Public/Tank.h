@@ -6,6 +6,7 @@
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FTankDelegate);
 
 UCLASS()
 class BATTLETANK_API ATank : public APawn
@@ -19,6 +20,8 @@ public:
 	// Returns Current Health as a percentage of starting health
 	UFUNCTION(BlueprintPure, Category = "Damage")
 	float GetHealthPercent() const;
+
+	FTankDelegate OnDeath;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -29,7 +32,6 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Damage")
 	int32 StartingHealth = 100;
 
-	UPROPERTY(VisibleAnywhere, Category = "Damage")
-	int32 CurrentHealth = StartingHealth;
+	int32 CurrentHealth = StartingHealth; // Setting here to avoid 0 value to start
 
 };

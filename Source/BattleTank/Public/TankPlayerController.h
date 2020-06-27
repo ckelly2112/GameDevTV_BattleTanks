@@ -13,18 +13,6 @@ UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-private:
-
-	UPROPERTY(EditDefaultsOnly)
-	float CrosshairXLocation = 0.5f;
-	UPROPERTY(EditDefaultsOnly)
-	float CrosshairYLocation = 0.33333f;
-	UPROPERTY(EditDefaultsOnly)
-	float LineTraceRange = 1000000.f;
-
-	public:
-		void BeginPlay() override;
-		void Tick(float DeltaTime) override;
 
 protected:
 
@@ -38,4 +26,21 @@ public:
 		bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 		bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
 		bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+private:
+
+	UPROPERTY(EditDefaultsOnly)
+	float CrosshairXLocation = 0.5f;
+	UPROPERTY(EditDefaultsOnly)
+	float CrosshairYLocation = 0.33333f;
+	UPROPERTY(EditDefaultsOnly)
+	float LineTraceRange = 1000000.f;
+
+
+	void BeginPlay() override;
+	void Tick(float DeltaTime) override;
+
+	virtual void SetPawn(APawn* InPawn) override;
+
+	UFUNCTION()
+	void OnPossessedTankDeath();
 };
